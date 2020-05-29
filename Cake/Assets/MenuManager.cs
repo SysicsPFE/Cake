@@ -13,8 +13,8 @@ public class MenuManager : MonoBehaviour
     public GameObject PackDetailsPanel;
     
     public Image PackImage;
-    public Text LockedTxt;
-    public Text NbcoinTxt;
+    public TextMeshProUGUI LockedTxt;
+    public TextMeshProUGUI NbcoinTxt;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +34,8 @@ public class MenuManager : MonoBehaviour
 
             GameObject go= Instantiate(PackButton, packPanel.transform);
             go.GetComponentInChildren<Image>().sprite = Packs[i].image;
-            //RegisterListenerPack(go, i);
-            go.GetComponent<Button>().onClick.AddListener(() => { OnPackClick(i); });
+            RegisterListenerPack(go, i);
+            
             
         }
     }
@@ -46,20 +46,21 @@ public class MenuManager : MonoBehaviour
     {
 
         Debug.Log(i);
+        obj.GetComponent<Button>().onClick.AddListener(() => { OnPackClick(i); });
         
     }
     public void OnPackClick(int i)
     {
-        Debug.Log("ioj");
+       
         PackDetailsPanel.SetActive(true);
         PackImage.sprite = Packs[i].image;
         LockedTxt.text = "Unlocked after "+ Packs[i].Locked + " games";
         NbcoinTxt.text = Packs[i].nbCoin +"Coins";
     }
-    public void test()
+    public void exitPackDetails()
     {
-        Debug.Log("ihbiub");
+        PackDetailsPanel.SetActive(false);
     }
-
+   
 
 }
