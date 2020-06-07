@@ -5,7 +5,7 @@ using UnityEngine;
 public class Rotate : MonoBehaviour
 {
     [SerializeField]
-    byte degreesPerSecond = 55;
+    public static int degreesPerSecond = 55;
     Renderer Cake;
 
     void start()

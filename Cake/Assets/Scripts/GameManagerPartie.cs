@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class GameManagerPartie : MonoBehaviour
 {
     public static GameManagerPartie instance;
@@ -21,7 +21,17 @@ public class GameManagerPartie : MonoBehaviour
     private byte materialSelected;
     public int scoreValue = 0;
     public Text scoreText;
+    public TextMeshProUGUI ScoreTxt;
+    public TextMeshProUGUI highScore;
+    public GameObject HighScoreMenu;
     public Material[] materials=new Material[4];
+    public bool Die = false;
+    public GameObject GameOverMenu;
+    public string Mode;
+    public GameObject ProgressBar;
+    public int CakeSpeed;
+    public int[] SpeedArray = new int[] {100, 25, 150, 10, 50 };
+    
 
     void Awake()
     {
@@ -30,8 +40,12 @@ public class GameManagerPartie : MonoBehaviour
         
     
     void Start()
-    {
-        //scoreText = GetComponent<Text>();
+    {   
+
+        Mode = ModesManager.Mode;
+        Debug.Log(Mode);
+        highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
+         
         cakeMaterials = Resources.LoadAll<Material>("cakeMaterials");
         creamMaterials = Resources.LoadAll<Material>("creamMaterials");
         materialSelected = (byte)Random.Range(0, cakeMaterials.Length);
@@ -56,9 +70,30 @@ public class GameManagerPartie : MonoBehaviour
             }
             
         }
-        
-        
+        switch (Mode)
+        {
+            case "Endless":
+                Debug.Log("5tart Endless");
+                break;
+
+            case "Timer":
+                 
+                Debug.Log(" 5tart timer ");
+                ProgressBar.SetActive(true);
+                break;
+
+            case "Speed":
+                StartCoroutine(RandomSpeed());
+                
+                Debug.Log("5tart speed");
+                break;
+        }
     }
+
+       
+          
+
+
    public void nextCake()
     {
         curentCake = Cakes[Random.Range(0, nb_cake)];
@@ -78,11 +113,42 @@ public class GameManagerPartie : MonoBehaviour
         
         cakeInstantiated.transform.position = Vector3.Lerp(cakeInstantiated.transform.position, new Vector3(cakeInstantiated.transform.position.x, cakeInstantiated.transform.position.y + 185, cakeInstantiated.transform.position.z), speed * Time.deltaTime);
         curentCake_ = Instantiate(curentCake, cakePos, Quaternion.Euler(0, 0, 0),cakeInstantiated.transform);
+         
 
     }
     // Update is called once per frame
     void Update()
-    {
+   {
+      
+
+
+
         scoreText.text = "score: " + scoreValue;
+        if (Die)
+        {
+            FindObjectOfType<AudioManager>().Play("GameOver");
+            if (scoreValue > PlayerPrefs.GetInt("HighScore", 0))
+            {
+                PlayerPrefs.SetInt("HighScore", scoreValue);
+                highScore.text = scoreValue.ToString();
+                HighScoreMenu.SetActive(true);
+
+            }
+            else
+            {
+                GameOverMenu.SetActive(true);
+            }
+                ScoreTxt.text = "Your score is  " +  scoreValue;
+        }
+    }
+
+    IEnumerator RandomSpeed()
+    {
+        while (true)
+        {
+            Rotate.degreesPerSecond = SpeedArray[Random.Range(2, SpeedArray.Length)];
+            yield return new WaitForSeconds(5);
+            Debug.Log(Rotate.degreesPerSecond);
+        }
     }
 }

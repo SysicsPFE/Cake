@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Pack4
   m_EditorClassIdentifier: 
   Price: 0
-  image: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  image: {fileID: 21300000, guid: b0522e57521e655439f4e47c987db93a, type: 3}
   Locked: 89
   nbCoin: 255
+  CharacterImage: {fileID: 21300000, guid: 5dfd78c6aef02864cb0b5afe31a93374, type: 3}
+  Name: PANDA

@@ -8,6 +8,7 @@ public class collision : MonoBehaviour
     static  int counter=0;
     public GameObject cake;
     
+    
 
     private int score;
     // Start is called before the first frame update
@@ -53,6 +54,8 @@ public class collision : MonoBehaviour
         {
 
             Debug.Log("die");
+            GameManagerPartie.instance.Die = true;
+            
        }
         
         
@@ -61,12 +64,33 @@ public class collision : MonoBehaviour
         {
             
             Debug.Log("kmel");
-          
-           GameManagerPartie.instance.nextCake();
+           
+             
 
-           GameManagerPartie.instance.scoreValue += 10;
+            switch (GameManagerPartie.instance.Mode)
+            {
+                case "Endless":
+                    GameManagerPartie.instance.nextCake();
+                    break;
+
+                case "Timer":
+
+                    Timer.timeLeft = 50f;
+                    GameManagerPartie.instance.nextCake();
+                    
+                    break;
+
+                case "Speed":
+
+                    Debug.Log("5tart speed");
+                    GameManagerPartie.instance.nextCake();
+                    break;
+            }
+            //GameManagerPartie.instance.nextCake();
+            GameManagerPartie.instance.scoreValue += 10;
            
         }
+       
 
 
     }

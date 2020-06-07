@@ -11,10 +11,14 @@ public class ShopManager : MonoBehaviour
     public GameObject PackButton;
     public GameObject packPanel;
     public GameObject PackDetailsPanel;
+    private PackScript lastPackClicked;
+    public GameObject Shop;
     
     public Image PackImage;
     public TextMeshProUGUI LockedTxt;
     public TextMeshProUGUI NbcoinTxt;
+    public TextMeshProUGUI NameTxt;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +30,18 @@ public class ShopManager : MonoBehaviour
     void Update()
     {
         
+    }
+    IEnumerator CoinAnimationAdd(byte c)
+    {
+
+        for (int i = 0; i < c; i++)
+        {
+
+            yield return new WaitForSeconds(Time.deltaTime);
+            GetComponent<MenuManager>().CoinValue--;
+            GetComponent<MenuManager>().CoinText.text = GetComponent<MenuManager>().CoinValue.ToString();
+
+        }
     }
     private void instantiatePacks()
     {
@@ -51,15 +67,31 @@ public class ShopManager : MonoBehaviour
     }
     public void OnPackClick(int i)
     {
-       
+        lastPackClicked = Packs[i];
         PackDetailsPanel.SetActive(true);
-        PackImage.sprite = Packs[i].image;
+        PackImage.sprite = Packs[i].CharacterImage;
         LockedTxt.text = "Unlocked after "+ Packs[i].Locked + " games";
         NbcoinTxt.text = Packs[i].nbCoin +"Coins";
+        NameTxt.text = Packs[i].Name ;
+    }
+    public void onBuyClick()
+    {
+        if (lastPackClicked.nbCoin > GetComponent<MenuManager>().CoinValue)
+        {
+        }
+        else
+        {
+            StartCoroutine(CoinAnimationAdd(lastPackClicked.nbCoin));
+        }
     }
     public void exitPackDetails()
     {
         PackDetailsPanel.SetActive(false);
+    }
+
+    public void ExitShop()
+    {
+        Shop.SetActive(false);
     }
    
 
