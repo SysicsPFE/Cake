@@ -15,7 +15,9 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
+        
         CoinText.text = CoinValue.ToString();
+        
 
     }
 

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ee0cc3b110b3144a00ba6d7f857927, type: 3}
+  m_Name: Pack6
+  m_EditorClassIdentifier: 
+  Price: 50
+  image: {fileID: 21300000, guid: 454bb5c169020474a937924b72c702e7, type: 3}
+  Locked: 50
+  nbCoin: 20
+  CharacterImage: {fileID: 21300000, guid: 7efc56425d210e645a049b4cb1a631fe, type: 3}
+  Name: bbbbb

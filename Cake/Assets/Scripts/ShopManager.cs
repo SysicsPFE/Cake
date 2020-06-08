@@ -14,6 +14,7 @@ public class ShopManager : MonoBehaviour
     private PackScript lastPackClicked;
     public GameObject Shop;
     
+    
     public Image PackImage;
     public TextMeshProUGUI LockedTxt;
     public TextMeshProUGUI NbcoinTxt;
@@ -23,6 +24,7 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
         instantiatePacks();
+        
         
     }
 
@@ -40,6 +42,7 @@ public class ShopManager : MonoBehaviour
             yield return new WaitForSeconds(Time.deltaTime);
             GetComponent<MenuManager>().CoinValue--;
             GetComponent<MenuManager>().CoinText.text = GetComponent<MenuManager>().CoinValue.ToString();
+            
 
         }
     }
