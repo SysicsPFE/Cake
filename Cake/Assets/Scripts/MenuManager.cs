@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     public TextMeshProUGUI CoinText;
     public GameObject Shop;
     public GameObject Modes;
+    public GameObject Settings;
 
     void Start()
     {
@@ -41,6 +42,10 @@ public class MenuManager : MonoBehaviour
     public void PlayMode()
     {
         Modes.SetActive(true);
+    }
+    public void PlaySettings()
+    {
+        Settings.SetActive(true);
     }
         
         
