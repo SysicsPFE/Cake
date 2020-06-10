@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,14 +32,15 @@ public class GameManagerPartie : MonoBehaviour
     public GameObject ProgressBar;
     public int CakeSpeed;
     public int[] SpeedArray = new int[] {100, 25, 150, 10, 50 };
+    public GameObject Wall;
+    public GameObject Wall_;
+    public Vector3 WallPos;
     
 
     void Awake()
     {
         instance=this;
     }
-        
-    
     void Start()
     {   
 
@@ -61,6 +63,8 @@ public class GameManagerPartie : MonoBehaviour
         Cake_Div = curentCake.transform.childCount;
         Debug.Log("nb div est " + Cake_Div);
         curentCake_= Instantiate(curentCake, cakePos, Quaternion.Euler(0, 0, 0),cakeInstantiated.transform);
+        Wall_ = Instantiate(Wall, WallPos, Quaternion.Euler(0, 0, 0), cakeInstantiated.transform);
+
         for (int i = 0; i < nb_cake; i++)
         {
             for (int j = 0; j < Cakes[i].transform.childCount; j++)
@@ -89,12 +93,7 @@ public class GameManagerPartie : MonoBehaviour
                 break;
         }
     }
-
-       
-          
-
-
-   public void nextCake()
+    public void nextCake()
     {
         curentCake = Cakes[Random.Range(0, nb_cake)];
         Cake_Div = curentCake.transform.childCount;
@@ -116,7 +115,6 @@ public class GameManagerPartie : MonoBehaviour
          
 
     }
-    // Update is called once per frame
     void Update()
    {
       
@@ -152,3 +150,6 @@ public class GameManagerPartie : MonoBehaviour
         }
     }
 }
+
+
+

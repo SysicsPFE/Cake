@@ -1,39 +1,9 @@
 fileFormatVersion: 2
-guid: 4a2f5c1d67b2f054491690f510185902
+guid: d2434cc66e2c6894fb3fd6932b96c094
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: anisotropic1
-    second: {fileID: 2100000, guid: c62f6695a2373a44ba18eb8739c7414e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: anisotropic3
-    second: {fileID: 2100000, guid: 44c949c3f0e41874098ead8b0d63535c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: anisotropic4
-    second: {fileID: 2100000, guid: dac0c0a41a2529d41a1b53fd27812936, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: 5724f9f0960cbe44ab144a28608edf95, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: c1
-    second: {fileID: 2800000, guid: 22c35a30a8f69814ea56719c09553a7f, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: couleur2
-    second: {fileID: 2800000, guid: 055cc5ce85b01c743a926a42d003bfa2, type: 3}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
