@@ -9,6 +9,7 @@ public class GameManagerPartie : MonoBehaviour
     public static GameManagerPartie instance;
    // public List<GameObject> myCake;
     public  GameObject[] Cakes;
+    public GameObject[] Walls;
     public Vector3 cakePos;
     public int nb_cake;
     public GameObject curentCake;
@@ -54,16 +55,16 @@ public class GameManagerPartie : MonoBehaviour
        Debug.Log("bbb" + materialSelected);
        Debug.Log("aaaaaaaa" + cakeMaterials[materialSelected]);
         Cakes = Resources.LoadAll<GameObject>("Cakes");
+        Walls = Resources.LoadAll<GameObject>("WALL");
         Debug.Log("Cakes length:" + Cakes.Length);
         nb_cake = Cakes.Length;
-        
         curentCake = Cakes[Random.Range(0, nb_cake)];
         Debug.Log("curent cake is "+ curentCake);
 
         Cake_Div = curentCake.transform.childCount;
         Debug.Log("nb div est " + Cake_Div);
         curentCake_= Instantiate(curentCake, cakePos, Quaternion.Euler(0, 0, 0),cakeInstantiated.transform);
-        Wall_ = Instantiate(Wall, WallPos, Quaternion.Euler(0, 0, 0), cakeInstantiated.transform);
+       
 
         for (int i = 0; i < nb_cake; i++)
         {
@@ -72,8 +73,19 @@ public class GameManagerPartie : MonoBehaviour
                 Cakes[i].transform.GetChild(j).gameObject.GetComponent<MeshRenderer>().sharedMaterial = materials[Random.Range(0, materials.Length)];
                // Debug.Log(Cakes[i].transform.GetChild(j).GetComponent<MeshRenderer>().material.GetColor("_BaseColor"));
             }
-            
+
+        } switch (scoreValue)
+        {
+            case 0:
+                Wall = Walls[0];
+                Wall_ = Instantiate(Wall, WallPos, Quaternion.Euler(0, 0, 0));
+                break;
+            case 10:
+                Wall = Walls[1];
+                Wall_ = Instantiate(Wall, WallPos, Quaternion.Euler(0, 0, 0));
+                break;
         }
+        
         switch (Mode)
         {
             case "Endless":
@@ -117,8 +129,10 @@ public class GameManagerPartie : MonoBehaviour
     }
     void Update()
    {
+
       
 
+       
 
 
         scoreText.text = "score: " + scoreValue;
