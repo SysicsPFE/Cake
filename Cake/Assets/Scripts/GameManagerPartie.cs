@@ -130,11 +130,6 @@ public class GameManagerPartie : MonoBehaviour
     void Update()
    {
 
-      
-
-       
-
-
         scoreText.text = "score: " + scoreValue;
         if (Die)
         {

@@ -7,6 +7,7 @@ using TMPro;
 public class SettingsManager : MonoBehaviour
 {
     public AudioMixer mixer;
+    public GameObject Settings;
 
     public void SetLevel(float slideValue)
     {
@@ -18,4 +19,5 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.DeleteAll();
         GameManagerPartie.instance.highScore.text = "0";
     }
+  
 }

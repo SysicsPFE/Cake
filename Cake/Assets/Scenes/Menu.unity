@@ -507,6 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: 80034090cd9865d498bc1cac69f2946c, type: 2}
+  Settings: {fileID: 0}
 --- !u!114 &138661455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,6 +898,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b53f532ed4b187a4b8436d09e61c4278, type: 2}
   - {fileID: 11400000, guid: 4efa0537f260b144bb7b180adf167d49, type: 2}
   - {fileID: 11400000, guid: 0f7779227b2fe1d4ba5f7d7ae1583e1e, type: 2}
+  - {fileID: 11400000, guid: 55162e9c38df718408827fac3ed27efc, type: 2}
+  - {fileID: 11400000, guid: dd69f678dbc704e4da0b03b01070c654, type: 2}
   PackButton: {fileID: 6798444861204272741, guid: 59763ef1e937a714297f56b13481d5fa,
     type: 3}
   packPanel: {fileID: 1021310590}
@@ -982,7 +985,7 @@ RectTransform:
   m_Father: {fileID: 343513365}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.000000059604645, y: 0}
+  m_AnchorMin: {x: 0.00000017881393, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -2856,7 +2859,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 474702730}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.99999994
+  m_Size: 0.9999998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3225,6 +3228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: 80034090cd9865d498bc1cac69f2946c, type: 2}
+  Settings: {fileID: 1234634002}
 --- !u!1 &1257665368
 GameObject:
   m_ObjectHideFlags: 0
@@ -3538,8 +3542,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 442337497}
-        m_MethodName: BackMenu
+      - m_Target: {fileID: 1234634006}
+        m_MethodName: playHome
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
