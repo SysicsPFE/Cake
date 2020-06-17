@@ -155,22 +155,22 @@ public class GameManagerPartie : MonoBehaviour
     IEnumerator WallGenerator()
     {
 
-        /*switch (scoreValue)
+        switch (scoreValue)
         {
             case 0:
                 Wall = WallArray[0];
                 Wall_ = Instantiate(Wall, WallPos, Quaternion.Euler(0, 0, 0));
 
-                continue;
+                break;
             case 20:
                 Wall = WallArray[1];
                 Wall_ = Instantiate(Wall, WallPos, Quaternion.Euler(0, 0, 0));
                 break;
         }
 
-        yield return new WaitForSeconds(Time.deltaTime);*/
+        yield return new WaitForSeconds(Time.deltaTime);
 
-        if (scoreValue > 0 & scoreValue < 10)
+        /*if (scoreValue > 0 & scoreValue < 10)
         {
             Wall = WallArray[0];
         }
@@ -180,7 +180,7 @@ public class GameManagerPartie : MonoBehaviour
         }
         
         Wall_ = Instantiate(Wall, WallPos, Quaternion.Euler(0, 0, 0));
-        yield return new WaitForSeconds(Time.deltaTime);
+        yield return new WaitForSeconds(Time.deltaTime);*/
     }
        
 
