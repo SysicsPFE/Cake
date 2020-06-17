@@ -37,7 +37,15 @@ public class GameManagerPartie : MonoBehaviour
     public Vector3 WallPos;
     public GameObject[] WallArray;
     public AudioClip playerJump;
-   
+    public GameObject Table1;
+    public GameObject Table2;
+    public GameObject Table3;
+    public GameObject floor1;
+    public GameObject floor2;
+    public GameObject floor3;
+    public GameObject BG1;
+    public GameObject BG2;
+    public GameObject BG3;
 
     void Awake()
     {
@@ -80,18 +88,19 @@ public class GameManagerPartie : MonoBehaviour
         {
             case "Endless":
                 Debug.Log("5tart Endless");
+                Time.timeScale = 1f;
                 StartCoroutine(WallGenerator());
                 break;
 
             case "Timer":
                  
                 Debug.Log(" 5tart timer ");
-                ProgressBar.SetActive(true);
+                Time.timeScale = 1f;
                 break;
 
             case "Speed":
                 StartCoroutine(RandomSpeed());
-                
+                Time.timeScale = 1f;
                 Debug.Log("5tart speed");
                 break;
         }
@@ -138,7 +147,8 @@ public class GameManagerPartie : MonoBehaviour
             {
                 GameOverMenu.SetActive(true);
             }
-                ScoreTxt.text = "Your score is  " +  scoreValue;
+                ScoreTxt.text =scoreValue.ToString();
+                Time.timeScale = 0f;
         }
     }
 
@@ -182,12 +192,8 @@ public class GameManagerPartie : MonoBehaviour
         Wall_ = Instantiate(Wall, WallPos, Quaternion.Euler(0, 0, 0));
         yield return new WaitForSeconds(Time.deltaTime);*/
     }
-       
-
-
 
     
-
 }
 
 

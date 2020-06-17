@@ -18,13 +18,13 @@ public class ModesManager : MonoBehaviour
     {
         Mode = "Timer";
         Debug.Log(Mode);
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
     }
     public void Speed()
     {
         Mode = "Speed";
         Debug.Log(Mode);
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
     public void BackMenu()
     {
