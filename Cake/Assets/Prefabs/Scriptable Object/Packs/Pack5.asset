@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Pack5
   m_EditorClassIdentifier: 
   Price: 30
-  image: {fileID: 21300000, guid: 515220ec713549e4ea7922d9e2877090, type: 3}
+  image: {fileID: 21300000, guid: d207d26ece8aa234ab119a26910e8e12, type: 3}
   Locked: 35
   nbCoin: 66
+  Unlocked: 0
   CharacterImage: {fileID: 21300000, guid: 9abb0d0f387c82d4c971becb3056c653, type: 3}
-  Name: aaaaa
+  Name: Rabit
+  LockImage: {fileID: 21300000, guid: d207d26ece8aa234ab119a26910e8e12, type: 3}

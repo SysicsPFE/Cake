@@ -37,12 +37,7 @@ public class collision : MonoBehaviour
             
             col2.a = 1;
             col.gameObject.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", col2);
-           /* Debug.Log(col1);
-            Debug.Log(col2);
-            Debug.Log(col.gameObject.name );
-            Debug.Log(col.gameObject.GetComponent<MeshRenderer>().material);
-            Debug.Log(this.gameObject.GetComponent<MeshRenderer>().material);*/
-            //col.gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
+        
             GameManagerPartie.instance.Cake_Div--;
             Debug.Log(GameManagerPartie.instance.Cake_Div);
             

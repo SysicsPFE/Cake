@@ -16,5 +16,7 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: b0522e57521e655439f4e47c987db93a, type: 3}
   Locked: 89
   nbCoin: 255
+  Unlocked: 0
   CharacterImage: {fileID: 21300000, guid: 5dfd78c6aef02864cb0b5afe31a93374, type: 3}
   Name: PANDA
+  LockImage: {fileID: 21300000, guid: 2e9e11f30d285374ca716631330ef42e, type: 3}

@@ -7,7 +7,6 @@ using TMPro;
 public class GameManagerPartie : MonoBehaviour
 {
     public static GameManagerPartie instance;
-   // public List<GameObject> myCake;
     public  GameObject[] Cakes;
     public GameObject[] Walls;
     public Vector3 cakePos;
@@ -36,7 +35,8 @@ public class GameManagerPartie : MonoBehaviour
     public GameObject Wall;
     public GameObject Wall_;
     public Vector3 WallPos;
-    
+    public GameObject[] WallArray;
+   
 
     void Awake()
     {
@@ -47,15 +47,14 @@ public class GameManagerPartie : MonoBehaviour
 
         Mode = ModesManager.Mode;
         Debug.Log(Mode);
+        
         highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
-         
         cakeMaterials = Resources.LoadAll<Material>("cakeMaterials");
         creamMaterials = Resources.LoadAll<Material>("creamMaterials");
         materialSelected = (byte)Random.Range(0, cakeMaterials.Length);
-       Debug.Log("bbb" + materialSelected);
-       Debug.Log("aaaaaaaa" + cakeMaterials[materialSelected]);
         Cakes = Resources.LoadAll<GameObject>("Cakes");
-        Walls = Resources.LoadAll<GameObject>("WALL");
+       // Walls = Resources.LoadAll<GameObject>("WALL");
+
         Debug.Log("Cakes length:" + Cakes.Length);
         nb_cake = Cakes.Length;
         curentCake = Cakes[Random.Range(0, nb_cake)];
@@ -71,25 +70,16 @@ public class GameManagerPartie : MonoBehaviour
             for (int j = 0; j < Cakes[i].transform.childCount; j++)
             {
                 Cakes[i].transform.GetChild(j).gameObject.GetComponent<MeshRenderer>().sharedMaterial = materials[Random.Range(0, materials.Length)];
-               // Debug.Log(Cakes[i].transform.GetChild(j).GetComponent<MeshRenderer>().material.GetColor("_BaseColor"));
+               
             }
 
-        } switch (scoreValue)
-        {
-            case 0:
-                Wall = Walls[0];
-                Wall_ = Instantiate(Wall, WallPos, Quaternion.Euler(0, 0, 0));
-                break;
-            case 10:
-                Wall = Walls[1];
-                Wall_ = Instantiate(Wall, WallPos, Quaternion.Euler(0, 0, 0));
-                break;
-        }
+        } 
         
         switch (Mode)
         {
             case "Endless":
                 Debug.Log("5tart Endless");
+                StartCoroutine(WallGenerator());
                 break;
 
             case "Timer":
@@ -121,7 +111,7 @@ public class GameManagerPartie : MonoBehaviour
         {
             cakeInstantiated.transform.GetChild(i).localScale = new Vector3(cakeInstantiated.transform.GetChild(i).localScale.x - 1000, cakeInstantiated.transform.GetChild(i).localScale.y, cakeInstantiated.transform.GetChild(i).localScale.z - 1000);
         }
-        
+         
         cakeInstantiated.transform.position = Vector3.Lerp(cakeInstantiated.transform.position, new Vector3(cakeInstantiated.transform.position.x, cakeInstantiated.transform.position.y + 185, cakeInstantiated.transform.position.z), speed * Time.deltaTime);
         curentCake_ = Instantiate(curentCake, cakePos, Quaternion.Euler(0, 0, 0),cakeInstantiated.transform);
          
@@ -158,6 +148,43 @@ public class GameManagerPartie : MonoBehaviour
             Debug.Log(Rotate.degreesPerSecond);
         }
     }
+
+    IEnumerator WallGenerator()
+    {
+
+        /*switch (scoreValue)
+        {
+            case 0:
+                Wall = WallArray[0];
+                Wall_ = Instantiate(Wall, WallPos, Quaternion.Euler(0, 0, 0));
+
+                continue;
+            case 20:
+                Wall = WallArray[1];
+                Wall_ = Instantiate(Wall, WallPos, Quaternion.Euler(0, 0, 0));
+                break;
+        }
+
+        yield return new WaitForSeconds(Time.deltaTime);*/
+
+        if (scoreValue > 0 & scoreValue < 10)
+        {
+            Wall = WallArray[0];
+        }
+        else
+        {
+            Wall = WallArray[1];
+        }
+        
+        Wall_ = Instantiate(Wall, WallPos, Quaternion.Euler(0, 0, 0));
+        yield return new WaitForSeconds(Time.deltaTime);
+    }
+       
+
+
+
+    
+
 }
 
 

@@ -7,7 +7,7 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-
+    
     public int CoinValue = 0;
     public TextMeshProUGUI CoinText;
     public GameObject Shop;
@@ -16,7 +16,12 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-        
+        if (PlayerPrefs.GetInt("firstTime", 0) == 0)
+        {
+            GetComponent<StoryBoardManager>().StartStory();
+            PlayerPrefs.SetInt("firstTime",1);
+            
+        }
         CoinText.text = CoinValue.ToString();
         
 
@@ -35,10 +40,7 @@ public class MenuManager : MonoBehaviour
     {
         Shop.SetActive(true);
     }
-    /*public void PlayModes()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
-    }*/
+   
     public void PlayMode()
     {
         Modes.SetActive(true);
@@ -47,6 +49,8 @@ public class MenuManager : MonoBehaviour
     {
         Settings.SetActive(true);
     }
+    
+
         
         
 }

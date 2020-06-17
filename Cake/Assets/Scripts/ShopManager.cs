@@ -70,17 +70,22 @@ public class ShopManager : MonoBehaviour
     }
     public void OnPackClick(int i)
     {
-        lastPackClicked = Packs[i];
-        PackDetailsPanel.SetActive(true);
-        PackImage.sprite = Packs[i].CharacterImage;
-        LockedTxt.text = "Unlocked after "+ Packs[i].Locked + " games";
-        NbcoinTxt.text = Packs[i].nbCoin +"Coins";
-        NameTxt.text = Packs[i].Name ;
+        if (Packs[i].Unlocked == false)
+        {
+            lastPackClicked = Packs[i];
+            PackDetailsPanel.SetActive(true);
+            PackImage.sprite = Packs[i].CharacterImage;
+            LockedTxt.text = "Unlocked after " + Packs[i].Locked + " games";
+            NbcoinTxt.text = Packs[i].nbCoin + "Coins";
+            NameTxt.text = Packs[i].Name;
+        }
+
     }
     public void onBuyClick()
     {
         if (lastPackClicked.nbCoin > GetComponent<MenuManager>().CoinValue)
         {
+            lastPackClicked.Unlocked = true;
         }
         else
         {

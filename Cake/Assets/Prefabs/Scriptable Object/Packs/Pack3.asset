@@ -16,5 +16,7 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: 515220ec713549e4ea7922d9e2877090, type: 3}
   Locked: 3
   nbCoin: 32
+  Unlocked: 0
   CharacterImage: {fileID: 21300000, guid: 9abb0d0f387c82d4c971becb3056c653, type: 3}
   Name: KONGORO
+  LockImage: {fileID: 21300000, guid: 23b6e7f037b923445aeecc9ec087960f, type: 3}

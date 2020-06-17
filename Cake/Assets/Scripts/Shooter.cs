@@ -17,15 +17,26 @@ public class Shooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) )
         {
-            
-            GameObject Shoot = Instantiate(prefab) as GameObject;
-           
-            Shoot.transform.position = firePoint.position;
-            Rigidbody rb = Shoot.GetComponent<Rigidbody>();
-            rb.velocity = Camera.main.transform.forward * 400;
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Physics.Raycast(ray, out hit);
+            if (hit.collider != null)
+            {
+
+                if (hit.collider.tag == "dough")
+                {
+                    GameObject Shoot = Instantiate(prefab) as GameObject;
+
+                    Shoot.transform.position = firePoint.position;
+                    Rigidbody rb = Shoot.GetComponent<Rigidbody>();
+                    rb.velocity = Camera.main.transform.forward * 400;
+                }
+
+            }
         }
-          
+
+        
     }
 }

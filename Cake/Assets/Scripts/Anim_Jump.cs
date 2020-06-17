@@ -17,9 +17,21 @@ public class Anim_Jump : MonoBehaviour
     {
 
         if (Input.GetMouseButtonDown(0))
-        {  
-             Character_Anim.SetTrigger("Trigger");
-            
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Physics.Raycast(ray, out hit);
+            if (hit.collider != null)
+            {
+
+                if (hit.collider.tag == "dough")
+                {
+                    Character_Anim.SetTrigger("Trigger");
+                }
+
+            }
         }
+
+      
     }
 }

@@ -9,6 +9,8 @@ public class PackScript : ScriptableObject
     public Sprite image;
     public byte Locked;
     public byte nbCoin;
+    public bool Unlocked;
     public Sprite CharacterImage;
     public string Name;
+    public Sprite LockImage;
 }

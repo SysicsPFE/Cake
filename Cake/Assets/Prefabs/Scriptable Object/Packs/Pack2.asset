@@ -16,5 +16,7 @@ MonoBehaviour:
   image: {fileID: 21300000, guid: ca4004314652ba248a269c178e39d31c, type: 3}
   Locked: 10
   nbCoin: 100
+  Unlocked: 0
   CharacterImage: {fileID: 21300000, guid: c90ec88dcd373184fa9054768bca7a23, type: 3}
   Name: COW
+  LockImage: {fileID: 21300000, guid: 28b17c91805d83e44925263d79c3c94e, type: 3}
