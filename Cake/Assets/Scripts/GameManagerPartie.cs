@@ -36,6 +36,7 @@ public class GameManagerPartie : MonoBehaviour
     public GameObject Wall_;
     public Vector3 WallPos;
     public GameObject[] WallArray;
+    public AudioClip playerJump;
    
 
     void Awake()
@@ -97,6 +98,7 @@ public class GameManagerPartie : MonoBehaviour
     }
     public void nextCake()
     {
+        
         curentCake = Cakes[Random.Range(0, nb_cake)];
         Cake_Div = curentCake.transform.childCount;
         GameObject creamInstantiated= Instantiate(Cream, new Vector3(curentCake_.transform.position.x, curentCake_.transform.position.y, curentCake_.transform.position.z), Quaternion.Euler(0, 0, 0), cakeInstantiated.transform);
@@ -114,6 +116,7 @@ public class GameManagerPartie : MonoBehaviour
          
         cakeInstantiated.transform.position = Vector3.Lerp(cakeInstantiated.transform.position, new Vector3(cakeInstantiated.transform.position.x, cakeInstantiated.transform.position.y + 185, cakeInstantiated.transform.position.z), speed * Time.deltaTime);
         curentCake_ = Instantiate(curentCake, cakePos, Quaternion.Euler(0, 0, 0),cakeInstantiated.transform);
+        AudioManager.playSound("Score");
          
 
     }
@@ -123,7 +126,7 @@ public class GameManagerPartie : MonoBehaviour
         scoreText.text = "score: " + scoreValue;
         if (Die)
         {
-            FindObjectOfType<AudioManager>().Play("GameOver");
+            
             if (scoreValue > PlayerPrefs.GetInt("HighScore", 0))
             {
                 PlayerPrefs.SetInt("HighScore", scoreValue);

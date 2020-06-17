@@ -19,9 +19,11 @@ public class Shooter : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) )
         {
+            
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Physics.Raycast(ray, out hit);
+
             if (hit.collider != null)
             {
 
@@ -33,10 +35,11 @@ public class Shooter : MonoBehaviour
                     Rigidbody rb = Shoot.GetComponent<Rigidbody>();
                     rb.velocity = Camera.main.transform.forward * 400;
                 }
-
+                AudioManager.playSound("Jump");
             }
+           
         }
-
+       
         
     }
 }

@@ -4,23 +4,38 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    public Sound[] sounds;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        foreach (Sound s in sounds)
-        {
-            s.source=gameObject.AddComponent<AudioSource>();
-            s.source.clip = s.clip;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
+    public static AudioClip JumpSound;
+    public static AudioClip ScoreSound;
+    public static AudioClip GameOver;
+    public static AudioSource audioSrc;  
 
-        }
+
+
+    void Start()
+    {
+
+        JumpSound = Resources.Load<AudioClip>("Jump");
+        ScoreSound = Resources.Load<AudioClip>("Score");
+        GameOver = Resources.Load<AudioClip>("GameOver");
+        audioSrc = GetComponent<AudioSource>();
     }
 
-    public void Play(string name)
+
+
+
+
+    public static void playSound(string Clip)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
+
+        switch (Clip)
+        {
+            case "Jump":
+                audioSrc.PlayOneShot(JumpSound);
+                break;
+
+            case "Score":
+                audioSrc.PlayOneShot(ScoreSound);
+                break;
+        }
     }
 }

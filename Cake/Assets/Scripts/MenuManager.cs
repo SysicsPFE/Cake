@@ -39,6 +39,7 @@ public class MenuManager : MonoBehaviour
     public void PlayShop()
     {
         Shop.SetActive(true);
+        
     }
    
     public void PlayMode()
